@@ -11,6 +11,11 @@ tools.esptool_py.cmd.windows=esptool.exe
 tools.esptool_py.network_cmd=python "{runtime.platform.path}/tools/espota.py"
 tools.esptool_py.network_cmd.windows="{runtime.platform.path}/tools/espota.exe"
 
+tools.esptool_py_ezlcd.path={runtime.tools.esptool_py.path}
+tools.esptool_py_ezlcd.cmd=esptool
+tools.esptool_py_ezlcd.cmd.linux=esptool.py
+tools.esptool_py_ezlcd.cmd.windows=esptool.exe
+
 tools.gen_esp32part.cmd=python "{runtime.platform.path}/tools/gen_esp32part.py"
 tools.gen_esp32part.cmd.windows="{runtime.platform.path}/tools/gen_esp32part.exe"
 
@@ -110,3 +115,12 @@ tools.esptool_py.upload.params.quiet=
 tools.esptool_py.upload.pattern="{path}/{cmd}" --chip esp32 --port "{serial.port}" --baud {upload.speed}  --before default_reset --after hard_reset write_flash -z --flash_mode {build.flash_mode} --flash_freq {build.flash_freq} --flash_size detect 0xe000 "{runtime.platform.path}/tools/partitions/boot_app0.bin" 0x1000 "{runtime.platform.path}/tools/sdk/bin/bootloader_{build.boot}_{build.flash_freq}.bin" 0x10000 "{build.path}/{build.project_name}.bin" 0x8000 "{build.path}/{build.project_name}.partitions.bin"
 tools.esptool_py.upload.pattern.linux=python "{path}/{cmd}" --chip esp32 --port "{serial.port}" --baud {upload.speed}  --before default_reset --after hard_reset write_flash -z --flash_mode {build.flash_mode} --flash_freq {build.flash_freq} --flash_size detect 0xe000 "{runtime.platform.path}/tools/partitions/boot_app0.bin" 0x1000 "{runtime.platform.path}/tools/sdk/bin/bootloader_{build.boot}_{build.flash_freq}.bin" 0x10000 "{build.path}/{build.project_name}.bin" 0x8000 "{build.path}/{build.project_name}.partitions.bin"
 tools.esptool_py.upload.network_pattern={network_cmd} -i "{serial.port}" -p "{network.port}" "--auth={network.password}" -f "{build.path}/{build.project_name}.bin"
+
+# -------------------------------
+# For EZLCD, execute a wrapper which calls the standard esptool after kicking the board into Passthru mode
+tools.esptool_py_ezlcd.upload.protocol=esp32
+tools.esptool_py_ezlcd.upload.params.verbose=
+tools.esptool_py_ezlcd.upload.params.quiet=
+tools.esptool_py_ezlcd.upload.pattern=powershell.exe -executionpolicy Unrestricted -file "{runtime.platform.path}\variants\ezlcd4056\ezlcd_esp_prog.ps1" "{serial.port}" "{path}/{cmd}" --chip esp32 --port "{serial.port}" --baud {upload.speed}  --before default_reset --after hard_reset write_flash -z --flash_mode {build.flash_mode} --flash_freq {build.flash_freq} --flash_size detect 0xe000 "{runtime.platform.path}/tools/partitions/boot_app0.bin" 0x1000 "{runtime.platform.path}/tools/sdk/bin/bootloader_{build.boot}_{build.flash_freq}.bin" 0x10000 "{build.path}/{build.project_name}.bin" 0x8000 "{build.path}/{build.project_name}.partitions.bin"
+tools.esptool_py_ezlcd.upload.pattern.linux=python "{path}/{cmd}" --chip esp32 --port "{serial.port}" --baud {upload.speed}  --before default_reset --after hard_reset write_flash -z --flash_mode {build.flash_mode} --flash_freq {build.flash_freq} --flash_size detect 0xe000 "{runtime.platform.path}/tools/partitions/boot_app0.bin" 0x1000 "{runtime.platform.path}/tools/sdk/bin/bootloader_{build.boot}_{build.flash_freq}.bin" 0x10000 "{build.path}/{build.project_name}.bin" 0x8000 "{build.path}/{build.project_name}.partitions.bin"
+tools.esptool_py_ezlcd.upload.network_pattern={network_cmd} -i "{serial.port}" -p "{network.port}" "--auth={network.password}" -f "{build.path}/{build.project_name}.bin"
