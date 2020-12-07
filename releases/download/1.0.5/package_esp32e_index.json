@@ -11,7 +11,7 @@
           "category": "ESP32", 
           "name": "esp32", 
           "url": "https://github.com/earthlcd/arduino-esp32/raw/master/releases/download/1.0.5/esp32e-1.0.5.zip", 
-          "checksum": "SHA-256:195749c4a91629341b83f2fe9f0e140ccd9f9e14052d53ddfadc6492d590a23c", 
+          "checksum": "SHA-256:6ce706c47642938322c8da0f14f65cd1df9667be80e42c948aa849bdb6e645a7", 
           "help": {
             "online": ""
           }, 
@@ -40,7 +40,7 @@
               "name": "mkspiffs"
             }
           ], 
-          "size": "37016524"
+          "size": "36940691"
         }
       ], 
       "tools": [
