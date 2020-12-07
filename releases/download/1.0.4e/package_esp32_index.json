@@ -10,7 +10,7 @@
         {
           "category": "ESP32", 
           "name": "esp32", 
-          "url": "https://github.com/earthlcd/arduino-esp32/releases/download/1.0.4e/esp32-1.0.4e.zip", 
+          "url": "https://github.com/earthlcd/arduino-esp32/raw/master/releases/download/1.0.4e/esp32-1.0.4e.zip", 
           "checksum": "SHA-256:d9108bf873933c4e48a3ca401fb51e41b2cc3f98d7c9b9be9881e7ca34bf0efe", 
           "help": {
             "online": ""
