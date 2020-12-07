@@ -1,9 +1,9 @@
 {
   "packages": [
     {
-      "maintainer": "Espressif Systems", 
+      "maintainer": "Espressif Systems/EZLCD", 
       "help": {
-        "online": "http://esp32.com"
+        "online": "http://earthlcd.com"
       }, 
       "websiteURL": "https://github.com/espressif/arduino-esp32", 
       "platforms": [
